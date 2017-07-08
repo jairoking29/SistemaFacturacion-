@@ -1,0 +1,88 @@
+﻿@model SF.Models.AsientosContables
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar</h2>
+
+<h3>Está seguro que quiere eliminar este registro?</h3>
+<div>
+    <h4>Asientos Contables</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cuenta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cuenta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoMovimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoMovimiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaAsiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaAsiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MontoAsiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MontoAsiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clientes.nombreComercial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clientes.nombreComercial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clientes1.nombreComercial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clientes1.nombreComercial)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver", "Index")
+        </div>
+    }
+</div>

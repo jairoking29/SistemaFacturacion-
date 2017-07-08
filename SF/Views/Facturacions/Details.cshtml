@@ -1,0 +1,98 @@
+﻿@model SF.Models.Facturacion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Factura</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comentario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comentario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioUnitario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioUnitario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Articulos.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Articulos.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Articulos1.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Articulos1.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clientes.nombreComercial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clientes.nombreComercial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clientes1.nombreComercial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clientes1.nombreComercial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vendedores.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vendedores.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vendedores1.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vendedores1.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id_Factura }) |
+    @Html.ActionLink("Volver", "Index")
+</p>

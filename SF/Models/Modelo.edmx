@@ -1,0 +1,522 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SistemaFacturacionModelo.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Articulos">
+          <Key>
+            <PropertyRef Name="Id_Articulo" />
+          </Key>
+          <Property Name="Id_Articulo" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrecioUnitario" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="AsientosContables">
+          <Key>
+            <PropertyRef Name="Id_AsientoContable" />
+          </Key>
+          <Property Name="Id_AsientoContable" Type="int" Nullable="false" />
+          <Property Name="Id_Cliente" Type="int" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cuenta" Type="int" Nullable="false" />
+          <Property Name="TipoMovimiento" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="FechaAsiento" Type="date" Nullable="false" />
+          <Property Name="MontoAsiento" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="Id_Cliente" />
+          </Key>
+          <Property Name="Id_Cliente" Type="int" Nullable="false" />
+          <Property Name="nombreComercial" Type="varchar" MaxLength="50" />
+          <Property Name="RNC" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="cuentaContable" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Facturacion">
+          <Key>
+            <PropertyRef Name="Id_Factura" />
+          </Key>
+          <Property Name="Id_Factura" Type="int" Nullable="false" />
+          <Property Name="Id_Vendedor" Type="int" />
+          <Property Name="Id_Cliente" Type="int" />
+          <Property Name="Id_Articulo" Type="int" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="Comentario" Type="varchar" MaxLength="200" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="PrecioUnitario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FormaPago">
+          <Key>
+            <PropertyRef Name="Id_FormPago" />
+          </Key>
+          <Property Name="Id_FormPago" Type="int" Nullable="false" />
+          <Property Name="Tipo" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Detalle" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vendedores">
+          <Key>
+            <PropertyRef Name="Id_Vendedor" />
+          </Key>
+          <Property Name="Id_Vendedor" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="PrecioComision" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK__AsientosC__Id_Cl__1A14E395">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+          <End Role="AsientosContables" Type="Self.AsientosContables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="Id_Cliente" />
+            </Principal>
+            <Dependent Role="AsientosContables">
+              <PropertyRef Name="Id_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AsientosC__Id_Cl__239E4DCF">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+          <End Role="AsientosContables" Type="Self.AsientosContables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="Id_Cliente" />
+            </Principal>
+            <Dependent Role="AsientosContables">
+              <PropertyRef Name="Id_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Facturaci__Id_Ar__1B0907CE">
+          <End Role="Articulos" Type="Self.Articulos" Multiplicity="0..1" />
+          <End Role="Facturacion" Type="Self.Facturacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articulos">
+              <PropertyRef Name="Id_Articulo" />
+            </Principal>
+            <Dependent Role="Facturacion">
+              <PropertyRef Name="Id_Articulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Facturaci__Id_Ar__24927208">
+          <End Role="Articulos" Type="Self.Articulos" Multiplicity="0..1" />
+          <End Role="Facturacion" Type="Self.Facturacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articulos">
+              <PropertyRef Name="Id_Articulo" />
+            </Principal>
+            <Dependent Role="Facturacion">
+              <PropertyRef Name="Id_Articulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Facturaci__Id_Cl__1BFD2C07">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+          <End Role="Facturacion" Type="Self.Facturacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="Id_Cliente" />
+            </Principal>
+            <Dependent Role="Facturacion">
+              <PropertyRef Name="Id_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Facturaci__Id_Cl__25869641">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+          <End Role="Facturacion" Type="Self.Facturacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="Id_Cliente" />
+            </Principal>
+            <Dependent Role="Facturacion">
+              <PropertyRef Name="Id_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Facturaci__Id_Ve__1CF15040">
+          <End Role="Vendedores" Type="Self.Vendedores" Multiplicity="0..1" />
+          <End Role="Facturacion" Type="Self.Facturacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendedores">
+              <PropertyRef Name="Id_Vendedor" />
+            </Principal>
+            <Dependent Role="Facturacion">
+              <PropertyRef Name="Id_Vendedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Facturaci__Id_Ve__267ABA7A">
+          <End Role="Vendedores" Type="Self.Vendedores" Multiplicity="0..1" />
+          <End Role="Facturacion" Type="Self.Facturacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendedores">
+              <PropertyRef Name="Id_Vendedor" />
+            </Principal>
+            <Dependent Role="Facturacion">
+              <PropertyRef Name="Id_Vendedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SistemaFacturacionModeloStoreContainer">
+          <EntitySet Name="Articulos" EntityType="Self.Articulos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AsientosContables" EntityType="Self.AsientosContables" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Facturacion" EntityType="Self.Facturacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormaPago" EntityType="Self.FormaPago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vendedores" EntityType="Self.Vendedores" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__AsientosC__Id_Cl__1A14E395" Association="Self.FK__AsientosC__Id_Cl__1A14E395">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="AsientosContables" EntitySet="AsientosContables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AsientosC__Id_Cl__239E4DCF" Association="Self.FK__AsientosC__Id_Cl__239E4DCF">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="AsientosContables" EntitySet="AsientosContables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Facturaci__Id_Ar__1B0907CE" Association="Self.FK__Facturaci__Id_Ar__1B0907CE">
+            <End Role="Articulos" EntitySet="Articulos" />
+            <End Role="Facturacion" EntitySet="Facturacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Facturaci__Id_Ar__24927208" Association="Self.FK__Facturaci__Id_Ar__24927208">
+            <End Role="Articulos" EntitySet="Articulos" />
+            <End Role="Facturacion" EntitySet="Facturacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Facturaci__Id_Cl__1BFD2C07" Association="Self.FK__Facturaci__Id_Cl__1BFD2C07">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Facturacion" EntitySet="Facturacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Facturaci__Id_Cl__25869641" Association="Self.FK__Facturaci__Id_Cl__25869641">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Facturacion" EntitySet="Facturacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Facturaci__Id_Ve__1CF15040" Association="Self.FK__Facturaci__Id_Ve__1CF15040">
+            <End Role="Vendedores" EntitySet="Vendedores" />
+            <End Role="Facturacion" EntitySet="Facturacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Facturaci__Id_Ve__267ABA7A" Association="Self.FK__Facturaci__Id_Ve__267ABA7A">
+            <End Role="Vendedores" EntitySet="Vendedores" />
+            <End Role="Facturacion" EntitySet="Facturacion" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SistemaFacturacionModelo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Articulos">
+          <Key>
+            <PropertyRef Name="Id_Articulo" />
+          </Key>
+          <Property Name="Id_Articulo" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PrecioUnitario" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Facturacion" Relationship="Self.FK__Facturaci__Id_Ar__1B0907CE" FromRole="Articulos" ToRole="Facturacion" />
+          <NavigationProperty Name="Facturacion1" Relationship="Self.FK__Facturaci__Id_Ar__24927208" FromRole="Articulos" ToRole="Facturacion" />
+        </EntityType>
+        <EntityType Name="AsientosContables">
+          <Key>
+            <PropertyRef Name="Id_AsientoContable" />
+          </Key>
+          <Property Name="Id_AsientoContable" Type="Int32" Nullable="false" />
+          <Property Name="Id_Cliente" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cuenta" Type="Int32" Nullable="false" />
+          <Property Name="TipoMovimiento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaAsiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="MontoAsiento" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK__AsientosC__Id_Cl__1A14E395" FromRole="AsientosContables" ToRole="Clientes" />
+          <NavigationProperty Name="Clientes1" Relationship="Self.FK__AsientosC__Id_Cl__239E4DCF" FromRole="AsientosContables" ToRole="Clientes" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="Id_Cliente" />
+          </Key>
+          <Property Name="Id_Cliente" Type="Int32" Nullable="false" />
+          <Property Name="nombreComercial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RNC" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cuentaContable" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AsientosContables" Relationship="Self.FK__AsientosC__Id_Cl__1A14E395" FromRole="Clientes" ToRole="AsientosContables" />
+          <NavigationProperty Name="AsientosContables1" Relationship="Self.FK__AsientosC__Id_Cl__239E4DCF" FromRole="Clientes" ToRole="AsientosContables" />
+          <NavigationProperty Name="Facturacion" Relationship="Self.FK__Facturaci__Id_Cl__1BFD2C07" FromRole="Clientes" ToRole="Facturacion" />
+          <NavigationProperty Name="Facturacion1" Relationship="Self.FK__Facturaci__Id_Cl__25869641" FromRole="Clientes" ToRole="Facturacion" />
+        </EntityType>
+        <EntityType Name="Facturacion">
+          <Key>
+            <PropertyRef Name="Id_Factura" />
+          </Key>
+          <Property Name="Id_Factura" Type="Int32" Nullable="false" />
+          <Property Name="Id_Vendedor" Type="Int32" />
+          <Property Name="Id_Cliente" Type="Int32" />
+          <Property Name="Id_Articulo" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Comentario" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="PrecioUnitario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Articulos" Relationship="Self.FK__Facturaci__Id_Ar__1B0907CE" FromRole="Facturacion" ToRole="Articulos" />
+          <NavigationProperty Name="Articulos1" Relationship="Self.FK__Facturaci__Id_Ar__24927208" FromRole="Facturacion" ToRole="Articulos" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK__Facturaci__Id_Cl__1BFD2C07" FromRole="Facturacion" ToRole="Clientes" />
+          <NavigationProperty Name="Clientes1" Relationship="Self.FK__Facturaci__Id_Cl__25869641" FromRole="Facturacion" ToRole="Clientes" />
+          <NavigationProperty Name="Vendedores" Relationship="Self.FK__Facturaci__Id_Ve__1CF15040" FromRole="Facturacion" ToRole="Vendedores" />
+          <NavigationProperty Name="Vendedores1" Relationship="Self.FK__Facturaci__Id_Ve__267ABA7A" FromRole="Facturacion" ToRole="Vendedores" />
+        </EntityType>
+        <EntityType Name="FormaPago">
+          <Key>
+            <PropertyRef Name="Id_FormPago" />
+          </Key>
+          <Property Name="Id_FormPago" Type="Int32" Nullable="false" />
+          <Property Name="Tipo" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Detalle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vendedores">
+          <Key>
+            <PropertyRef Name="Id_Vendedor" />
+          </Key>
+          <Property Name="Id_Vendedor" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PrecioComision" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Facturacion" Relationship="Self.FK__Facturaci__Id_Ve__1CF15040" FromRole="Vendedores" ToRole="Facturacion" />
+          <NavigationProperty Name="Facturacion1" Relationship="Self.FK__Facturaci__Id_Ve__267ABA7A" FromRole="Vendedores" ToRole="Facturacion" />
+        </EntityType>
+        <Association Name="FK__Facturaci__Id_Ar__1B0907CE">
+          <End Role="Articulos" Type="Self.Articulos" Multiplicity="0..1" />
+          <End Role="Facturacion" Type="Self.Facturacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articulos">
+              <PropertyRef Name="Id_Articulo" />
+            </Principal>
+            <Dependent Role="Facturacion">
+              <PropertyRef Name="Id_Articulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Facturaci__Id_Ar__24927208">
+          <End Role="Articulos" Type="Self.Articulos" Multiplicity="0..1" />
+          <End Role="Facturacion" Type="Self.Facturacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articulos">
+              <PropertyRef Name="Id_Articulo" />
+            </Principal>
+            <Dependent Role="Facturacion">
+              <PropertyRef Name="Id_Articulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AsientosC__Id_Cl__1A14E395">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+          <End Role="AsientosContables" Type="Self.AsientosContables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="Id_Cliente" />
+            </Principal>
+            <Dependent Role="AsientosContables">
+              <PropertyRef Name="Id_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AsientosC__Id_Cl__239E4DCF">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+          <End Role="AsientosContables" Type="Self.AsientosContables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="Id_Cliente" />
+            </Principal>
+            <Dependent Role="AsientosContables">
+              <PropertyRef Name="Id_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Facturaci__Id_Cl__1BFD2C07">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+          <End Role="Facturacion" Type="Self.Facturacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="Id_Cliente" />
+            </Principal>
+            <Dependent Role="Facturacion">
+              <PropertyRef Name="Id_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Facturaci__Id_Cl__25869641">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+          <End Role="Facturacion" Type="Self.Facturacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="Id_Cliente" />
+            </Principal>
+            <Dependent Role="Facturacion">
+              <PropertyRef Name="Id_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Facturaci__Id_Ve__1CF15040">
+          <End Role="Vendedores" Type="Self.Vendedores" Multiplicity="0..1" />
+          <End Role="Facturacion" Type="Self.Facturacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendedores">
+              <PropertyRef Name="Id_Vendedor" />
+            </Principal>
+            <Dependent Role="Facturacion">
+              <PropertyRef Name="Id_Vendedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Facturaci__Id_Ve__267ABA7A">
+          <End Role="Vendedores" Type="Self.Vendedores" Multiplicity="0..1" />
+          <End Role="Facturacion" Type="Self.Facturacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendedores">
+              <PropertyRef Name="Id_Vendedor" />
+            </Principal>
+            <Dependent Role="Facturacion">
+              <PropertyRef Name="Id_Vendedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SistemaFacturacionEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Articulos" EntityType="Self.Articulos" />
+          <EntitySet Name="AsientosContables" EntityType="Self.AsientosContables" />
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" />
+          <EntitySet Name="Facturacion" EntityType="Self.Facturacion" />
+          <EntitySet Name="FormaPago" EntityType="Self.FormaPago" />
+          <EntitySet Name="Vendedores" EntityType="Self.Vendedores" />
+          <AssociationSet Name="FK__Facturaci__Id_Ar__1B0907CE" Association="Self.FK__Facturaci__Id_Ar__1B0907CE">
+            <End Role="Articulos" EntitySet="Articulos" />
+            <End Role="Facturacion" EntitySet="Facturacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Facturaci__Id_Ar__24927208" Association="Self.FK__Facturaci__Id_Ar__24927208">
+            <End Role="Articulos" EntitySet="Articulos" />
+            <End Role="Facturacion" EntitySet="Facturacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AsientosC__Id_Cl__1A14E395" Association="Self.FK__AsientosC__Id_Cl__1A14E395">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="AsientosContables" EntitySet="AsientosContables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AsientosC__Id_Cl__239E4DCF" Association="Self.FK__AsientosC__Id_Cl__239E4DCF">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="AsientosContables" EntitySet="AsientosContables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Facturaci__Id_Cl__1BFD2C07" Association="Self.FK__Facturaci__Id_Cl__1BFD2C07">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Facturacion" EntitySet="Facturacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Facturaci__Id_Cl__25869641" Association="Self.FK__Facturaci__Id_Cl__25869641">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Facturacion" EntitySet="Facturacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Facturaci__Id_Ve__1CF15040" Association="Self.FK__Facturaci__Id_Ve__1CF15040">
+            <End Role="Vendedores" EntitySet="Vendedores" />
+            <End Role="Facturacion" EntitySet="Facturacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Facturaci__Id_Ve__267ABA7A" Association="Self.FK__Facturaci__Id_Ve__267ABA7A">
+            <End Role="Vendedores" EntitySet="Vendedores" />
+            <End Role="Facturacion" EntitySet="Facturacion" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SistemaFacturacionModeloStoreContainer" CdmEntityContainer="SistemaFacturacionEntities">
+          <EntitySetMapping Name="Articulos">
+            <EntityTypeMapping TypeName="SistemaFacturacionModelo.Articulos">
+              <MappingFragment StoreEntitySet="Articulos">
+                <ScalarProperty Name="Id_Articulo" ColumnName="Id_Articulo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="PrecioUnitario" ColumnName="PrecioUnitario" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AsientosContables">
+            <EntityTypeMapping TypeName="SistemaFacturacionModelo.AsientosContables">
+              <MappingFragment StoreEntitySet="AsientosContables">
+                <ScalarProperty Name="Id_AsientoContable" ColumnName="Id_AsientoContable" />
+                <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Cuenta" ColumnName="Cuenta" />
+                <ScalarProperty Name="TipoMovimiento" ColumnName="TipoMovimiento" />
+                <ScalarProperty Name="FechaAsiento" ColumnName="FechaAsiento" />
+                <ScalarProperty Name="MontoAsiento" ColumnName="MontoAsiento" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="SistemaFacturacionModelo.Clientes">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
+                <ScalarProperty Name="nombreComercial" ColumnName="nombreComercial" />
+                <ScalarProperty Name="RNC" ColumnName="RNC" />
+                <ScalarProperty Name="cuentaContable" ColumnName="cuentaContable" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facturacion">
+            <EntityTypeMapping TypeName="SistemaFacturacionModelo.Facturacion">
+              <MappingFragment StoreEntitySet="Facturacion">
+                <ScalarProperty Name="Id_Factura" ColumnName="Id_Factura" />
+                <ScalarProperty Name="Id_Vendedor" ColumnName="Id_Vendedor" />
+                <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
+                <ScalarProperty Name="Id_Articulo" ColumnName="Id_Articulo" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="PrecioUnitario" ColumnName="PrecioUnitario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormaPago">
+            <EntityTypeMapping TypeName="SistemaFacturacionModelo.FormaPago">
+              <MappingFragment StoreEntitySet="FormaPago">
+                <ScalarProperty Name="Id_FormPago" ColumnName="Id_FormPago" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendedores">
+            <EntityTypeMapping TypeName="SistemaFacturacionModelo.Vendedores">
+              <MappingFragment StoreEntitySet="Vendedores">
+                <ScalarProperty Name="Id_Vendedor" ColumnName="Id_Vendedor" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="PrecioComision" ColumnName="PrecioComision" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

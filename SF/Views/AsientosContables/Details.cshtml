@@ -1,0 +1,82 @@
+﻿@model SF.Models.AsientosContables
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Asientos Contables</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cuenta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cuenta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoMovimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoMovimiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaAsiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaAsiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MontoAsiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MontoAsiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clientes.nombreComercial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clientes.nombreComercial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clientes1.nombreComercial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clientes1.nombreComercial)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id_AsientoContable }) |
+    @Html.ActionLink("Volver", "Index")
+</p>
