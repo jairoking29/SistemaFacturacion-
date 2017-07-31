@@ -11,7 +11,8 @@ namespace SF.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class Clientes
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,8 +25,10 @@ namespace SF.Models
         }
     
         public int Id_Cliente { get; set; }
+        [DisplayName("Nombre comercial")]
         public string nombreComercial { get; set; }
         public string RNC { get; set; }
+        [DisplayName("Cuenta contable")]
         public int cuentaContable { get; set; }
         public string Estado { get; set; }
     

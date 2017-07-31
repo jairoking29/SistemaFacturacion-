@@ -11,7 +11,8 @@ namespace SF.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class Vendedores
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,6 +24,7 @@ namespace SF.Models
     
         public int Id_Vendedor { get; set; }
         public string Nombre { get; set; }
+        [DisplayName("Precio comisión")]
         public int PrecioComision { get; set; }
         public string Estado { get; set; }
     

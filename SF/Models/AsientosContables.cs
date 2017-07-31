@@ -11,15 +11,21 @@ namespace SF.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class AsientosContables
     {
         public int Id_AsientoContable { get; set; }
         public Nullable<int> Id_Cliente { get; set; }
+        [DisplayName("Descripción")]
         public string Descripcion { get; set; }
+        [DisplayName("Cuenta")]
         public int Cuenta { get; set; }
+        [DisplayName("Tipo de Movimiento")]
         public string TipoMovimiento { get; set; }
+        [DisplayName("Fecha del asiento")]
         public System.DateTime FechaAsiento { get; set; }
+        [DisplayName("Monto del asiento")]
         public int MontoAsiento { get; set; }
         public string Estado { get; set; }
     
