@@ -12,18 +12,9 @@ namespace SF.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class AsientosContables
+    public partial class TiposCuenta
     {
-        public int Id_AsientoContable { get; set; }
-        public Nullable<int> Id_Cliente { get; set; }
+        public int Id_TipoCuenta { get; set; }
         public string Descripcion { get; set; }
-        public int Id_CuentaContable { get; set; }
-        public string TipoMovimiento { get; set; }
-        public System.DateTime FechaAsiento { get; set; }
-        public decimal MontoAsiento { get; set; }
-        public Nullable<bool> Estado { get; set; }
-    
-        public virtual Clientes Clientes { get; set; }
-        public virtual CuentasContables CuentasContables { get; set; }
     }
 }

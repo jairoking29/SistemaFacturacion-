@@ -203,6 +203,9 @@
     <Compile Include="Models\Clientes.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CuentasContables.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Facturacion.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
@@ -223,6 +226,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Modelo.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Monedas.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TiposCuenta.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Vendedores.cs">
       <DependentUpon>Modelo.tt</DependentUpon>

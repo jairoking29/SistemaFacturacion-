@@ -12,25 +12,30 @@ namespace SF.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Clientes
+    public partial class CuentasContables
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Clientes()
+        public CuentasContables()
         {
             this.AsientosContables = new HashSet<AsientosContables>();
-            this.Facturacion = new HashSet<Facturacion>();
+            this.Clientes = new HashSet<Clientes>();
+            this.CuentasContables1 = new HashSet<CuentasContables>();
         }
     
-        public int Id_Cliente { get; set; }
-        public string nombreComercial { get; set; }
-        public string RNC { get; set; }
-        public int Id_CuentaContable { get; set; }
-        public Nullable<bool> Estado { get; set; }
+        public int ID_CuentaContable { get; set; }
+        public string Descripcion { get; set; }
+        public Nullable<bool> PermiteMov { get; set; }
+        public Nullable<byte> Tipo { get; set; }
+        public Nullable<byte> Nivel { get; set; }
+        public Nullable<decimal> Balance { get; set; }
+        public Nullable<int> Id_CuentaMayor { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AsientosContables> AsientosContables { get; set; }
-        public virtual CuentasContables CuentasContables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Facturacion> Facturacion { get; set; }
+        public virtual ICollection<Clientes> Clientes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CuentasContables> CuentasContables1 { get; set; }
+        public virtual CuentasContables CuentasContables2 { get; set; }
     }
 }

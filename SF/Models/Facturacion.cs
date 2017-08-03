@@ -11,27 +11,20 @@ namespace SF.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class Facturacion
     {
         public int Id_Factura { get; set; }
-        [DisplayName("Vendedor")]
         public Nullable<int> Id_Vendedor { get; set; }
-        [DisplayName("Cliente")]
         public Nullable<int> Id_Cliente { get; set; }
-        [DisplayName("Artículo")]
         public Nullable<int> Id_Articulo { get; set; }
         public System.DateTime Fecha { get; set; }
         public string Comentario { get; set; }
         public int Cantidad { get; set; }
-        public int PrecioUnitario { get; set; }
+        public decimal PrecioUnitario { get; set; }
     
         public virtual Articulos Articulos { get; set; }
-        public virtual Articulos Articulos1 { get; set; }
         public virtual Clientes Clientes { get; set; }
-        public virtual Clientes Clientes1 { get; set; }
         public virtual Vendedores Vendedores { get; set; }
-        public virtual Vendedores Vendedores1 { get; set; }
     }
 }

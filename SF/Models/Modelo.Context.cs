@@ -25,11 +25,14 @@ namespace SF.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<FormaPago> FormaPago { get; set; }
+        public virtual DbSet<Monedas> Monedas { get; set; }
+        public virtual DbSet<TiposCuenta> TiposCuenta { get; set; }
         public virtual DbSet<Articulos> Articulos { get; set; }
         public virtual DbSet<AsientosContables> AsientosContables { get; set; }
         public virtual DbSet<Clientes> Clientes { get; set; }
+        public virtual DbSet<CuentasContables> CuentasContables { get; set; }
         public virtual DbSet<Facturacion> Facturacion { get; set; }
-        public virtual DbSet<FormaPago> FormaPago { get; set; }
         public virtual DbSet<Vendedores> Vendedores { get; set; }
     }
 }

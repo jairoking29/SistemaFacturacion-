@@ -17,7 +17,7 @@ namespace SF.Controllers
         // GET: AsientosContables
         public ActionResult Index()
         {
-            var asientosContables = db.AsientosContables.Include(a => a.Clientes).Include(a => a.Clientes1);
+            var asientosContables = db.AsientosContables.Include(a => a.Clientes).Include(a => a.Clientes);
             return View(asientosContables.ToList());
         }
 

@@ -17,7 +17,7 @@ namespace SF.Controllers
         // GET: Facturacions
         public ActionResult Index()
         {
-            var facturacion = db.Facturacion.Include(f => f.Articulos).Include(f => f.Articulos1).Include(f => f.Clientes).Include(f => f.Clientes1).Include(f => f.Vendedores).Include(f => f.Vendedores1);
+            var facturacion = db.Facturacion.Include(f => f.Articulos).Include(f => f.Articulos).Include(f => f.Clientes).Include(f => f.Clientes).Include(f => f.Vendedores).Include(f => f.Vendedores);
             return View(facturacion.ToList());
         }
 

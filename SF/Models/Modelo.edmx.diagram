@@ -5,20 +5,22 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="4dcecdebdc5e409eb18e33fc382e8eef" Name="Diagram1" ZoomLevel="88">
-        <EntityTypeShape EntityType="SistemaFacturacionModelo.Articulos" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SistemaFacturacionModelo.AsientosContables" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SistemaFacturacionModelo.Clientes" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SistemaFacturacionModelo.Facturacion" Width="1.5" PointX="6" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SistemaFacturacionModelo.FormaPago" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SistemaFacturacionModelo.Vendedores" Width="1.5" PointX="3.75" PointY="7.625" IsExpanded="true" />
-        <AssociationConnector Association="SistemaFacturacionModelo.FK__Facturaci__Id_Ar__1B0907CE" ManuallyRouted="false" />
-        <AssociationConnector Association="SistemaFacturacionModelo.FK__Facturaci__Id_Ar__24927208" ManuallyRouted="false" />
-        <AssociationConnector Association="SistemaFacturacionModelo.FK__AsientosC__Id_Cl__1A14E395" ManuallyRouted="false" />
-        <AssociationConnector Association="SistemaFacturacionModelo.FK__AsientosC__Id_Cl__239E4DCF" ManuallyRouted="false" />
-        <AssociationConnector Association="SistemaFacturacionModelo.FK__Facturaci__Id_Cl__1BFD2C07" ManuallyRouted="false" />
-        <AssociationConnector Association="SistemaFacturacionModelo.FK__Facturaci__Id_Cl__25869641" ManuallyRouted="false" />
-        <AssociationConnector Association="SistemaFacturacionModelo.FK__Facturaci__Id_Ve__1CF15040" ManuallyRouted="false" />
-        <AssociationConnector Association="SistemaFacturacionModelo.FK__Facturaci__Id_Ve__267ABA7A" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SistemaFacturacionModelo.Monedas" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="SistemaFacturacionModelo.TiposCuenta" Width="1.5" PointX="8.75" PointY="5.75" />
+        <EntityTypeShape EntityType="SistemaFacturacionModelo.Articulos" Width="1.5" PointX="5.625" PointY="21.625" />
+        <EntityTypeShape EntityType="SistemaFacturacionModelo.AsientosContables" Width="1.5" PointX="7.875" PointY="12.75" />
+        <EntityTypeShape EntityType="SistemaFacturacionModelo.Clientes" Width="1.5" PointX="5.625" PointY="15" />
+        <EntityTypeShape EntityType="SistemaFacturacionModelo.CuentasContables" Width="1.5" PointX="3.375" PointY="11" />
+        <EntityTypeShape EntityType="SistemaFacturacionModelo.Facturacion" Width="1.5" PointX="7.875" PointY="16.75" />
+        <EntityTypeShape EntityType="SistemaFacturacionModelo.Vendedores" Width="1.5" PointX="5.625" PointY="18.875" />
+        <AssociationConnector Association="SistemaFacturacionModelo.FK__Facturaci__Id_Ar__36B12243" />
+        <AssociationConnector Association="SistemaFacturacionModelo.FK__AsientosC__Id_Cl__34C8D9D1" />
+        <AssociationConnector Association="SistemaFacturacionModelo.FK__AsientosC__Id_Cu__276EDEB3" />
+        <AssociationConnector Association="SistemaFacturacionModelo.FK__Clientes__Id_Cue__2A4B4B5E" />
+        <AssociationConnector Association="SistemaFacturacionModelo.FK__Facturaci__Id_Cl__37A5467C" />
+        <AssociationConnector Association="SistemaFacturacionModelo.FK__CuentasCo__Id_Cu__35BCFE0A" />
+        <AssociationConnector Association="SistemaFacturacionModelo.FK__Facturaci__Id_Ve__38996AB5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

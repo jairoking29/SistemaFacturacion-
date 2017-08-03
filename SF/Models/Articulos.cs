@@ -11,27 +11,21 @@ namespace SF.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class Articulos
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Articulos()
         {
             this.Facturacion = new HashSet<Facturacion>();
-            this.Facturacion1 = new HashSet<Facturacion>();
         }
-    
+   
         public int Id_Articulo { get; set; }
-        [DisplayName("Descripción")]
         public string Descripcion { get; set; }
-        [DisplayName("Precio Unitario")]
-        public int PrecioUnitario { get; set; }
-        public string Estado { get; set; }
+        public decimal PrecioUnitario { get; set; }
+        public Nullable<bool> Estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Facturacion> Facturacion { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Facturacion> Facturacion1 { get; set; }
     }
 }

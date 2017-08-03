@@ -32,12 +32,14 @@ namespace SF.Controllers
             {
                 return HttpNotFound();
             }
+
             return View(clientes);
         }
 
         // GET: Clientes/Create
         public ActionResult Create()
         {
+            ViewBag.ListaCuentasContables = db.CuentasContables.ToList();
             return View();
         }
 
@@ -46,7 +48,7 @@ namespace SF.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id_Cliente,nombreComercial,RNC,cuentaContable,Estado")] Clientes clientes)
+        public ActionResult Create([Bind(Include = "Id_Cliente,nombreComercial,RNC,Id_CuentaContable,Estado")] Clientes clientes)
         {
             if (ModelState.IsValid)
             {
@@ -70,6 +72,8 @@ namespace SF.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.ListaCuentasContables = db.CuentasContables.ToList();
+
             return View(clientes);
         }
 
@@ -78,7 +82,7 @@ namespace SF.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id_Cliente,nombreComercial,RNC,cuentaContable,Estado")] Clientes clientes)
+        public ActionResult Edit([Bind(Include = "Id_Cliente,nombreComercial,RNC,Id_CuentaContable,Estado")] Clientes clientes)
         {
             if (ModelState.IsValid)
             {
