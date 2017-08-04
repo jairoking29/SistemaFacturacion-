@@ -139,6 +139,7 @@
       <DependentUpon>Modelo.edmx</DependentUpon>
       <LastGenOutput>Modelo.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\Modelo.edmx.sql" />
     <Content Include="Models\Modelo.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Modelo.edmx</DependentUpon>
@@ -194,6 +195,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccountingEntriesSummary.cs" />
+    <Compile Include="Models\AccountingIntegrator.cs" />
     <Compile Include="Models\Articulos.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
@@ -234,6 +237,9 @@
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Vendedores.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\v_AsientosContables.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

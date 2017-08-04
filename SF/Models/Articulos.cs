@@ -19,7 +19,7 @@ namespace SF.Models
         {
             this.Facturacion = new HashSet<Facturacion>();
         }
-   
+    
         public int Id_Articulo { get; set; }
         public string Descripcion { get; set; }
         public decimal PrecioUnitario { get; set; }

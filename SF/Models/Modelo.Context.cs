@@ -34,5 +34,6 @@ namespace SF.Models
         public virtual DbSet<CuentasContables> CuentasContables { get; set; }
         public virtual DbSet<Facturacion> Facturacion { get; set; }
         public virtual DbSet<Vendedores> Vendedores { get; set; }
+        public virtual DbSet<v_AsientosContables> v_AsientosContables { get; set; }
     }
 }
