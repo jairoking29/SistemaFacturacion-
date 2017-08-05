@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SF.Models;
+using System.Threading.Tasks;
 
 namespace SF.Controllers
 {
@@ -123,6 +124,14 @@ namespace SF.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public async Task<ActionResult> MakeReport()
+        {
+            var result = await AccountingIntegrator.PostAccountingReport(new DateTime(2017, 1, 1), new DateTime(2017, 12, 31));
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
 
         protected override void Dispose(bool disposing)
         {
